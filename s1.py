@@ -32,7 +32,7 @@ def solve(s):
         p = (str(2000 + int(p[0])), p[1], p[2])
 
       # generate a date based on this tuple. If it's
-      # earlier than d we keep it
+      # earlier than d we keep it.
       _d = datetime.date(*[int(x) for x in p])
       if d is None or _d < d:
         d = _d
@@ -40,11 +40,13 @@ def solve(s):
     except ValueError:
       pass
 
+  # If we can't create a date from any of the tuples
+  # d will still be None and we should let the user
+  # know that the input was invalid.
   if d:
     print d
   else:
     print s, "is illegal"
-
 
 if __name__ == '__main__':
   doctest.testmod()
