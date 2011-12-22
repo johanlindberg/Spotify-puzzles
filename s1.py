@@ -13,6 +13,10 @@ def solve(s):
   """
   >>> solve("02/4/67")
   2067-02-04
+  >>> solve("12/11/10")
+  2010-11-12
+  >>> solve("31/5/2012")
+  2012-05-31
   """
   d = None
   for p in itertools.permutations(s.split("/"), 3):
