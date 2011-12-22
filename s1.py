@@ -12,16 +12,22 @@ import itertools
 def solve(s):
   """
   >>> solve("02/4/67")
-  ('02', '4', '67')
-  ('02', '67', '4')
-  ('4', '02', '67')
-  ('4', '67', '02')
-  ('67', '02', '4')
-  ('67', '4', '02')
+  0067-02-04
   """
   parts = s.split("/")
+  d = None
   for p in itertools.permutations(parts, 3):
-    print p
+    try:
+      # Years may be truncated to two digits and may
+      # in that case also omit the leading 0 (if there
+      # is one), so 2000 could be given as "2000", "00"
+      # or "0" (but not as an empty string).
+      _d = datetime.date(*[int(x) for x in p])
+      if d is None or _d < d: d = _d
+    except ValueError:
+      pass
+
+  print d
 
 
 if __name__ == '__main__':
