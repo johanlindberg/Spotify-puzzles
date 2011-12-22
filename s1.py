@@ -12,7 +12,7 @@ import itertools
 def solve(s):
   """
   >>> solve("02/4/67")
-  0067-02-04
+  2067-02-04
   """
   parts = s.split("/")
   d = None
@@ -22,6 +22,8 @@ def solve(s):
       # in that case also omit the leading 0 (if there
       # is one), so 2000 could be given as "2000", "00"
       # or "0" (but not as an empty string).
+      if len(p[0]) < 4:
+        p = (str(2000 + int(p[0])), p[1], p[2])
       _d = datetime.date(*[int(x) for x in p])
       if d is None or _d < d: d = _d
     except ValueError:
