@@ -12,10 +12,16 @@ import itertools
 def solve(s):
   """
   >>> solve("02/4/67")
-  ['02', '4', '67']
+  ('02', '4', '67')
+  ('02', '67', '4')
+  ('4', '02', '67')
+  ('4', '67', '02')
+  ('67', '02', '4')
+  ('67', '4', '02')
   """
   parts = s.split("/")
-  return parts
+  for p in itertools.permutations(parts, 3):
+    print p
 
 
 if __name__ == '__main__':
