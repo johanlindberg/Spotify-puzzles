@@ -5,13 +5,18 @@
 ## and Dec 31, 2999 (inclusive) using them as day, month and year (but not
 ## necessarily in that order).
 
+import datetime
 import doctest
+import itertools
 
 def solve(s):
   """
   >>> solve("02/4/67")
-  2067-04-02
+  ['02', '4', '67']
   """
+  parts = s.split("/")
+  return parts
+
 
 if __name__ == '__main__':
   doctest.testmod()
