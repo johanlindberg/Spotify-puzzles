@@ -17,6 +17,8 @@ def solve(s):
   2010-11-12
   >>> solve("31/5/2012")
   2012-05-31
+  >>> solve("31/9/73")
+  31/9/73 is illegal
   """
   d = None
   for p in itertools.permutations(s.split("/"), 3):
@@ -37,7 +39,10 @@ def solve(s):
     except ValueError:
       pass
 
-  print d
+  if d:
+    print d
+  else:
+    print s, "is illegal"
 
 
 if __name__ == '__main__':
