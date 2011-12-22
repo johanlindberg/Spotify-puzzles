@@ -28,3 +28,6 @@ Output a single line giving the earliest legal date possible given the above con
 
 Results
 -------
+
+    > python2.6 s1.py 31/9/73
+    31/9/73 is illegal
