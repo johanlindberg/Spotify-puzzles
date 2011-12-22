@@ -8,6 +8,7 @@
 import datetime
 import doctest
 import itertools
+import sys
 
 def solve(s):
   """
@@ -47,3 +48,5 @@ def solve(s):
 
 if __name__ == '__main__':
   doctest.testmod()
+  for i in sys.argv[1:]:
+    solve(i)
