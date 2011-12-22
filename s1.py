@@ -14,9 +14,8 @@ def solve(s):
   >>> solve("02/4/67")
   2067-02-04
   """
-  parts = s.split("/")
   d = None
-  for p in itertools.permutations(parts, 3):
+  for p in itertools.permutations(s.split("/"), 3):
     try:
       # Years may be truncated to two digits and may
       # in that case also omit the leading 0 (if there
@@ -24,8 +23,13 @@ def solve(s):
       # or "0" (but not as an empty string).
       if len(p[0]) < 4:
         p = (str(2000 + int(p[0])), p[1], p[2])
+
+      # generate a date based on this tuple. If it's
+      # earlier than d we keep it
       _d = datetime.date(*[int(x) for x in p])
-      if d is None or _d < d: d = _d
+      if d is None or _d < d:
+        d = _d
+
     except ValueError:
       pass
 
