@@ -10,6 +10,9 @@ import doctest
 import itertools
 import sys
 
+EARLIEST = datetime.date(2000, 01, 01)
+LATEST = datetime.date(2099, 12, 31)
+
 def solve(s):
   """
   >>> solve("02/4/67")
@@ -20,6 +23,8 @@ def solve(s):
   2012-05-31
   >>> solve("31/9/73")
   31/9/73 is illegal
+  >>> solve("1999/01/01")
+  1999/01/01 is illegal
   """
   d = None
   for p in itertools.permutations(s.split("/"), 3):
@@ -43,10 +48,15 @@ def solve(s):
   # If we can't create a date from any of the tuples
   # d will still be None and we should let the user
   # know that the input was invalid.
-  if d:
-    print d
-  else:
+  # Also, if the date falls outside the span of
+  # 2000-01-01 and 2099-12-31 we need to output that
+  # it's illegal.
+  if d is None or \
+     d < EARLIEST or \
+     d > LATEST:
     print s, "is illegal"
+  else:
+    print d
 
 if __name__ == '__main__':
   doctest.testmod()
