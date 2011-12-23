@@ -31,3 +31,12 @@ Results
 
     > python2.6 s1.py 31/9/73
     31/9/73 is illegal
+
+    > python2.6 s1.py 02/4/67
+    2067-02-04
+
+Spotify Judge
+-------------
+
+Apparently the Spotify Judge isn't particularly impressed by my solution. First of all I had to get rid of the `doctest.testmod` call, otherwise it complains about an `Illegal Function`. I guess it has something to do with how they load the program and run it but that's an easy enough fix. Unfortunately, after submitting again, it replied: `Wrong Answer`.
+
