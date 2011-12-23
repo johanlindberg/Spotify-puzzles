@@ -40,3 +40,19 @@ Spotify Judge
 
 Apparently the Spotify Judge isn't particularly impressed by my solution. First of all I had to get rid of the `doctest.testmod` call, otherwise it complains about an `Illegal Function`. I guess it has something to do with how they load the program and run it but that's an easy enough fix. Unfortunately, after submitting again, it replied: `Wrong Answer`.
 
+Turned out the problem was that I was reading from `sys.argv` not `stdin`. Once I got that sorted and commented out the doctest calls I got this reply.
+
+    From: Spotify Judge <puzzle@spotify.com>
+    To: Johan Lindberg <johan.h.lindberg@gmail.com>
+    Subject: Result for "bestbefore": Accepted
+    Date: Fri, 23 Dec 2011 18:50:33 +0100 (CET)
+
+    Hello Johan Lindberg,
+
+    Thank you for submitting a solution to our problem "bestbefore"!
+
+    We have tested your solution, and we are happy to report that it
+    solved the problem!  We hope you had as fun with it as we did.
+
+    Yours truly,
+    Spotify

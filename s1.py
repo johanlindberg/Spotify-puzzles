@@ -6,7 +6,7 @@
 ## necessarily in that order).
 
 import datetime
-import doctest
+#import doctest
 import itertools
 import sys
 
@@ -59,6 +59,6 @@ def solve(s):
     print d
 
 if __name__ == '__main__':
-  doctest.testmod()
-  for i in sys.argv[1:]:
-    solve(i)
+#  doctest.testmod()
+  for line in sys.stdin:
+    solve(line.strip())
