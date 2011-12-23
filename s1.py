@@ -11,7 +11,7 @@ import itertools
 import sys
 
 EARLIEST = datetime.date(2000, 01, 01)
-LATEST = datetime.date(2099, 12, 31)
+LATEST = datetime.date(2999, 12, 31)
 
 def solve(s):
   """
