@@ -6,6 +6,7 @@
 ## group?
 
 import doctest
+import math
 
 def solve(m, n, t, p):
     """
@@ -32,13 +33,22 @@ def solve(m, n, t, p):
     >>> solve(1, 1, 1, 2)
     False
 
-    # Calculate the probability to win the lottery
+    # Calculate the probability to win the lottery (for 1 person)
     >>> solve(10, 1, 1, 1)
-    0.1
+    0.1 1
     >>> solve(10, 2, 1, 1)
-    0.2
+    0.2 1
     >>> solve(15, 5, 1, 1)
-    0.333333333333
+    0.333333333333 1
+
+    # Calculate how many people in your group must win in order to
+    # buy tickets for everyone
+    >>> solve(100, 10, 1, 2)
+    0.1 2
+    >>> solve(100, 10, 2, 2)
+    0.1 1
+    >>> solve(100, 10, 2, 5)
+    0.1 3
     """
 
     # Make sure that input parameters are within range
@@ -46,7 +56,7 @@ def solve(m, n, t, p):
       if var < min or var > max:
         return False
 
-    print float(n)/float(m)
+    print float(n)/float(m), int(math.ceil(float(p)/float(t)))
 
 if __name__ == '__main__':
     doctest.testmod()
