@@ -31,12 +31,22 @@ def solve(m, n, t, p):
     False
     >>> solve(1, 1, 1, 2)
     False
+
+    # Calculate the probability to win the lottery
+    >>> solve(10, 1, 1, 1)
+    0.1
+    >>> solve(10, 2, 1, 1)
+    0.2
+    >>> solve(15, 5, 1, 1)
+    0.333333333333
     """
 
     # Make sure that input parameters are within range
     for var, min, max in [(m,1,1000), (n,1,m), (t,1,100), (p,1,m)]:
       if var < min or var > max:
         return False
+
+    print float(n)/float(m)
 
 if __name__ == '__main__':
     doctest.testmod()
