@@ -6,7 +6,24 @@
 ## group?
 
 import doctest
-import math
+import itertools
+
+def number_of_combinations(x, y):
+    """
+    >>> number_of_combinations(1, 1)
+    1
+    >>> number_of_combinations(2, 1)
+    2
+    >>> number_of_combinations(3, 2)
+    3
+    >>> number_of_combinations(5, 2)
+    10
+    >>> number_of_combinations(5, 3)
+    10
+    >>> number_of_combinations(10, 3)
+    120
+    """
+    return len([n for n in itertools.combinations(range(x), y)])
 
 def solve(m, n, t, p):
     """
