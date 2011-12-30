@@ -8,22 +8,40 @@
 import doctest
 import itertools
 
-def number_of_combinations(x, y):
+def c(x, y):
     """
-    >>> number_of_combinations(1, 1)
+    Calculate the number of ways to combine y elements from a total set of x.
+
+    >>> c(1, 1)
     1
-    >>> number_of_combinations(2, 1)
+    >>> c(2, 1)
     2
-    >>> number_of_combinations(3, 2)
+    >>> c(3, 2)
     3
-    >>> number_of_combinations(5, 2)
+    >>> c(5, 2)
     10
-    >>> number_of_combinations(5, 3)
+    >>> c(5, 3)
     10
-    >>> number_of_combinations(10, 3)
+    >>> c(10, 3)
     120
     """
     return len([n for n in itertools.combinations(range(x), y)])
+
+def p(x, y, m, n):
+    """
+    Calculate the probability to get X things out of Y in a sample of
+    size M drawn from a total number of things N.
+
+    Example:
+    In a box of ten (n) lightbulbs, three (y) are defect. What is the
+    probability that we get exactly one (x) defect lightbulb if we pull
+    two (m) randomly from the box (if we don't put them back in the box
+    in between pulls).
+
+    >>> print "%s %%" % (int(round(p(1, 3, 2, 10) * 100)))
+    47 %
+    """
+    return float(c(y, x)) * float(c(n - y, m - x)) / float(c(n, m))
 
 def solve(m, n, t, p):
     """
