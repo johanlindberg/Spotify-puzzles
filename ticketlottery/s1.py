@@ -6,12 +6,12 @@
 ## group?
 
 import doctest
-import itertools
 import math
 
 def comb(x, y):
     """
     Calculate the number of ways to combine y elements from a total set of x.
+    This is basically the same as len(itertools.combinations(x,y)).
 
     >>> comb(1, 1)
     1.0
@@ -26,23 +26,30 @@ def comb(x, y):
     >>> comb(10, 3)
     120.0
     """
-    return float(math.factorial(x)) / (float(math.factorial(y)) * float(math.factorial(x - y)))
+    return float(math.factorial(x)) / (float(math.factorial(y)) *
+                                       float(math.factorial(x - y)))
 
-def prob(x, y, m, n):
+def gen_prob(p, n, m):
     """
-    Calculate the probability to get X things out of Y in a sample of
-    size M drawn from a total number of things N.
+    Generate a probability function for the hypergeometric distribution.
+
+    The generated function takes one parameter (x) and calculates the
+    probability to get X things out of P in a sample of size N drawn from
+    a total number of things M.
 
     Example:
-    In a box of ten (n) lightbulbs, three (y) are defect. What is the
+    In a box of ten (m) lightbulbs, three (p) are defect. What is the
     probability that we get exactly one (x) defect lightbulb if we pull
-    two (m) randomly from the box (if we don't put them back in the box
+    two (n) randomly from the box (if we don't put them back in the box
     in between pulls).
 
-    >>> print "%s %%" % (int(round(prob(1, 3, 2, 10) * 100)))
+    >>> prob = gen_prob(3, 2, 10)
+    >>> print "%s %%" % (int(round(prob(1) * 100)))
     47 %
     """
-    return float(comb(y, x)) * float(comb(n - y, m - x)) / float(comb(n, m))
+    def probability(x):
+        return float(comb(p, x)) * float(comb(m - p, n - x)) / float(comb(m, n))
+    return probability
 
 def solve(m, n, t, p):
     """
@@ -82,13 +89,17 @@ def solve(m, n, t, p):
       if var < min or var > max:
         return False
 
+    # generate a probability function prob
+    prob = gen_prob(p, n, m)
+
     # make a list containing the least number of people required to
     # win the lottery (in order for the whole group to go) up to the
     # total number of people in the group. The solution to this puzzle
-    # is the sum of the results from the p function using this list as
-    # x.
+    # is the sum of the results from the prob function using this list
+    # as input parameters.
     xs = range(int(math.ceil(float(p) / float(t))), p + 1)
-    return sum([prob(x, p, n, m) for x in xs])
+
+    return sum([prob(x) for x in xs])
 
 if __name__ == '__main__':
     doctest.testmod()
