@@ -5,8 +5,9 @@
 ## is the probability that you will be able to get tickets for your entire
 ## group?
 
-import doctest
+#import doctest
 import math
+import sys
 
 def comb(x, y):
     """
@@ -48,7 +49,7 @@ def gen_prob(p, n, m):
     47 %
     """
     def probability(x):
-        return float(comb(p, x)) * float(comb(m - p, n - x)) / float(comb(m, n))
+      return float(comb(p, x)) * float(comb(m - p, n - x)) / float(comb(m, n))
     return probability
 
 def solve(m, n, t, p):
@@ -102,5 +103,7 @@ def solve(m, n, t, p):
     return sum([prob(x) for x in xs])
 
 if __name__ == '__main__':
-    doctest.testmod()
-    
+    #doctest.testmod()
+    for line in sys.stdin:
+      m, n, t, p = line.split()
+      print solve(int(m), int(n), int(t), int(p))
