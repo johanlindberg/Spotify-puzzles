@@ -31,10 +31,12 @@ Output a single line giving the earliest legal date possible given the above con
 Results
 -------
 
-    > python2.6 s1.py 31/9/73
+    > python2.6 s1.py
+    31/9/73^D
     31/9/73 is illegal
 
-    > python2.6 s1.py 02/4/67
+    > python2.6 s1.py
+    02/4/67^D
     2067-02-04
 
 Spotify Judge
