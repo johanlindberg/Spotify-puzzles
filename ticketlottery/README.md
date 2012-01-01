@@ -31,3 +31,8 @@ Output a single line containing the probability that your entire group can get t
     
     Sample input 3     Sample output 3
     10 10 5 1          1.0000000000
+
+Spotify Judge
+-------------
+
+Hmmm, the judge says `Run Time Error` and that my program exited with status 1. I *do* return `False` if the input parameters are out of bounds but could that really be the problem? This might take some meditating to get right.
