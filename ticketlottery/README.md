@@ -32,6 +32,13 @@ Output a single line containing the probability that your entire group can get t
     Sample input 3     Sample output 3
     10 10 5 1          1.0000000000
 
+Result
+------
+
+    > python2.6 s1.py
+    100 10 2 2^D
+    0.1909090909
+
 Spotify Judge
 -------------
 
