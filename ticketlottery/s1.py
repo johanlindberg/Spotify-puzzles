@@ -49,7 +49,10 @@ def gen_prob(p, n, m):
     47 %
     """
     def probability(x):
-      return float(comb(p, x)) * float(comb(m - p, n - x)) / float(comb(m, n))
+        try:
+            return float(comb(p, x)) * float(comb(m - p, n - x)) / float(comb(m, n))
+        except Exception:
+            return 0
     return probability
 
 def solve(m, n, t, p):
