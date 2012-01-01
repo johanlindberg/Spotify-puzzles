@@ -42,4 +42,4 @@ Result
 Spotify Judge
 -------------
 
-Hmmm, the judge says `Run Time Error` and that my program exited with status 1. I *do* return `False` if the input parameters are out of bounds but could that really be the problem? This might take some meditating to get right.
+First time around I got a `Run Time Error` and I managed to crash my program with the input `100 1 2 3` so that's fair enough. I fixed that with a Diaper but now the judge says: Wrong Answer. The nerve!!!
