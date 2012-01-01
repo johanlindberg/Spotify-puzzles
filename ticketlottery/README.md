@@ -42,4 +42,12 @@ Result
 Spotify Judge
 -------------
 
-First time around I got a `Run Time Error` and I managed to crash my program with the input `100 1 2 3` so that's fair enough. I fixed that with a Diaper but now the judge says: Wrong Answer. The nerve!!!
+First time around I got a `Run Time Error` and I managed to crash my program with the input `100 1 2 3` so that's fair enough. I fixed that with a Diaper but now the judge says: Wrong Answer.
+
+Ok. I think I've found the problem.
+
+    > python2.6 s1.py
+    10 10 2 9^D
+    1.0
+
+It cannot be guaranteed (probability 1.0) that the whole group go if the one person in the lottery who's *not* in the group is drawn before any of the others.
