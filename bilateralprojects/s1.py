@@ -12,13 +12,21 @@ def make_index(teams):
     >>> index = make_index([(1009, 2011), (1017, 2011)])
     >>> len(index)
     3
-    >>> for k,v in index:
-    ...   print k, v
-    1009 [2011]
-    1017 [2011]
-    2011 [1009, 1017]
+    >>> print index[2011]
+    [1009, 1017]
+    >>> print index[1009]
+    [2011]
+    >>> print index[1017]
+    [2011]
     """
-    return {}
+    result = {}
+    for id1, id2 in teams:
+        for a, b in [(id1, id2), (id2, id1)]:
+            if a not in result.keys():
+                result[a] = [b]
+            else:
+                result[a].append(b)
+    return result
 
 def solve(teams):
     """
