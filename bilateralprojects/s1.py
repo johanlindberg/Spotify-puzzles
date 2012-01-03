@@ -7,6 +7,19 @@
 
 import doctest
 
+def make_index(teams):
+    """
+    >>> index = make_index([(1009, 2011), (1017, 2011)])
+    >>> len(index)
+    3
+    >>> for k,v in index:
+    ...   print k, v
+    1009 [2011]
+    1017 [2011]
+    2011 [1009, 1017]
+    """
+    return {}
+
 def solve(teams):
     """
     >>> solve([(1009, 2011), (1017, 2011)])
