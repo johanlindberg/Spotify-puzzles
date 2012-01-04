@@ -21,6 +21,7 @@ def make_index(teams):
     >>> print index[1017]
     [1]
     """
+
     result = {}
     project_id = 0
     for id1, id2 in teams:
@@ -30,6 +31,7 @@ def make_index(teams):
             except KeyError:
                 result[id] = [project_id]
         project_id += 1
+
     return result
 
 def prune_index(index, n):
@@ -47,12 +49,23 @@ def prune_index(index, n):
     projects = range(n)
     result = {}
 
-    # sort index based on number of projects
-    for id in sorted(index.keys(), key = lambda k: len(index[k]), reverse = True):
+    ids = sorted(index.keys(), key = lambda k: len(index[k]), reverse = True)
+    while len(ids) > 0:
+        id = ids.pop(0)
         for p in index[id]:
             if p in projects:
-                projects.remove(p)
-                result[id] = index[id]
+                projects.remove(p)            # remove from list of projects
+
+                for _id in index.keys():      # remove any other references
+                    if _id != id and \
+                       p in index[_id]:
+                        index[_id].remove(p)
+
+                if id not in result.keys():
+                    result[id] = index[id]
+
+        # re-sort based on pruning
+        ids = sorted(ids, key = lambda k: len(index[k]), reverse = True)
 
     return result
 
@@ -61,9 +74,11 @@ def solve(teams):
     >>> solve([(1009, 2011), (1017, 2011)])
     [2011]
     >>> solve([(1009, 2011), (1017, 2011), (1009, 2012), (1017, 2012)])
-    [2011, 2012]
+    [1009, 1017]
     """
+
     index = prune_index(make_index(teams), len(teams))
+
     return sorted(index.keys())
 
 if __name__ == '__main__':
