@@ -23,10 +23,10 @@ def make_index(teams):
     team_id = 0
     for id1, id2 in teams:
         for id in [id1, id2]:
-            if id not in result.keys():
-                result[id] = [team_id]
-            else:
+            try:
                 result[id].append(team_id)
+            except KeyError:
+                result[id] = [team_id]
         team_id += 1
     return result
 
