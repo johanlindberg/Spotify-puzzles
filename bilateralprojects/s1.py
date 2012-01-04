@@ -60,9 +60,11 @@ def solve(teams):
     """
     >>> solve([(1009, 2011), (1017, 2011)])
     [2011]
+    >>> solve([(1009, 2011), (1017, 2011), (1009, 2012), (1017, 2012)])
+    [2011, 2012]
     """
     index = prune_index(make_index(teams), len(teams))
-    return index.keys()
+    return sorted(index.keys())
 
 if __name__ == '__main__':
     doctest.testmod()
