@@ -32,18 +32,29 @@ def make_index(teams):
         project_id += 1
     return result
 
-def prune_index(index):
+def prune_index(index, n):
     """
     prune_index deletes all duplicates in the index dict.
 
     >>> index = { 2011: [0,1], 1009: [0], 1017: [1] }
-    >>> index = prune_index(index)
+    >>> index = prune_index(index, 2)
     >>> len(index)
     1
     >>> print index[2011]
     [0, 1]
     """
-    return {}
+
+    projects = range(n)
+    result = {}
+
+    # sort index based on number of projects
+    for id in sorted(index.keys(), key = lambda k: len(index[k]), reverse = True):
+        for p in index[id]:
+            if p in projects:
+                projects.remove(p)
+                result[id] = index[id]
+
+    return result
 
 def solve(teams):
     """
