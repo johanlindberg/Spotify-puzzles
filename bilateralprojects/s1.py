@@ -6,6 +6,7 @@
 ## the list of invitees should include your friend.
 
 import doctest
+import sys
 
 def make_index(teams):
     """
@@ -82,5 +83,20 @@ def solve(teams):
 
     return sorted(index.keys())
 
+def format(people):
+    print len(people)
+    for p in people:
+        print p
+
 if __name__ == '__main__':
     doctest.testmod()
+    n, teams = 0, []
+    for line in sys.stdin:
+        try:
+            e1, e2 = line.strip().split()
+            teams.append([int(e1), int(e2)])
+        except ValueError:
+            n = int(line.strip())
+
+    if n == len(teams):
+        format(solve(teams))
