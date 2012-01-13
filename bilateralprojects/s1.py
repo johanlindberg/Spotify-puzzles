@@ -12,7 +12,7 @@ def make_index(teams):
     """
     make_index creates a dict indexing all employees and projects.
 
-    >>> index = make_index([(1009, 2011), (1017, 2011)])
+    >>> index, _ = make_index([(1009, 2011), (1017, 2011)])
     >>> len(index)
     3
     >>> print index[2011]
@@ -23,19 +23,24 @@ def make_index(teams):
     [1]
     """
 
-    result = {}
+    index, projects = {}, {}
     project_id = 0
     for id1, id2 in teams:
         for id in [id1, id2]:
             try:
-                result[id].append(project_id)
+                index[id].append(project_id)
             except KeyError:
-                result[id] = [project_id]
+                index[id] = [project_id]
+
+            try:
+                projects[project_id].append(id)
+            except KeyError:
+                projects[project_id] = [id]
         project_id += 1
 
-    return result
+    return index, projects
 
-def prune_index(index, n):
+def prune_index(index, projects, n):
     """
     prune_index deletes all duplicates in the index dict.
 
@@ -47,19 +52,18 @@ def prune_index(index, n):
     [0, 1]
     """
 
-    projects = range(n)
+    projs = range(n)
     result = {}
 
     ids = sorted(index.keys(), key = lambda k: len(index[k]), reverse = True)
     while len(ids) > 0:
         id = ids.pop(0)
         for p in index[id]:
-            if p in projects:
-                projects.remove(p)            # remove from list of projects
+            if p in projs:
+                projs.remove(p)               # remove from list of projects
 
-                for _id in index.keys():      # remove any other references
-                    if _id != id and \
-                       p in index[_id]:
+                for _id in projects[p]:       # remove any other references
+                    if _id != id:
                         index[_id].remove(p)
                         if len(index[_id]) == 0:
                             del index[_id]
@@ -82,7 +86,8 @@ def solve(teams):
     True
     """
 
-    index = prune_index(make_index(teams), len(teams))
+    index, projects = make_index(teams)
+    index = prune_index(index, projects, len(teams))
 
     return sorted(index.keys())
 
