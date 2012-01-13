@@ -1,4 +1,4 @@
-## Spotify Software Puzzles - Best Before
+## Spotify Software Puzzles - Bilateral projects
 ##
 ## Given a list of two-person teams, compute the smallest number of people
 ## to get at least one person from each project, as well as a list of those
@@ -61,6 +61,9 @@ def prune_index(index, n):
                     if _id != id and \
                        p in index[_id]:
                         index[_id].remove(p)
+                        if len(index[_id]) == 0:
+                            del index[_id]
+                            ids.remove(_id)
 
                 if id not in result.keys():
                     result[id] = index[id]
