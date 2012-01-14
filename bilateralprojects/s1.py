@@ -45,7 +45,8 @@ def prune_index(index, projects, n):
     prune_index deletes all duplicates in the index dict.
 
     >>> index = { 2011: [0,1], 1009: [0], 1017: [1] }
-    >>> index = prune_index(index, 2)
+    >>> projects = { 0: [1009,2011], 1: [1017,2011] }
+    >>> index = prune_index(index, projects, 2)
     >>> len(index)
     1
     >>> print index[2011]
