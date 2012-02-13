@@ -9,26 +9,17 @@
 import math
 import sys
 
-def comb(x, y):
-    """
-    Calculate the number of ways to combine y elements from a total set of x.
-    This is basically the same as len(itertools.combinations(x,y)).
-
-    >>> comb(1, 1)
-    1.0
-    >>> comb(2, 1)
-    2.0
-    >>> comb(3, 2)
-    3.0
-    >>> comb(5, 2)
-    10.0
-    >>> comb(5, 3)
-    10.0
-    >>> comb(10, 3)
-    120.0
-    """
-    return float(math.factorial(x)) / (float(math.factorial(y)) *
-                                       float(math.factorial(x - y)))
+def comb(n,k):
+    # binomial coefficient
+    if k < 0 or k > n:
+        return 0
+    if k > n - k: # take advantage of symmetry
+        k = n - k
+    c = 1
+    for i in range(k):
+        c = c * (n - (k - (i+1)))
+        c = c // (i+1)
+    return c
 
 def gen_prob(p, n, m):
     """
@@ -91,7 +82,7 @@ def solve(m, n, t, p):
     # Make sure that input parameters are within range
     for var, min_, max in [(m,1,1000), (n,1,m), (t,1,100), (p,1,m)]:
       if var < min_ or var > max:
-        return False
+        return 0.0
 
     min_required_wins = int(math.ceil(float(p) / float(t)))
     if min_required_wins > n:
