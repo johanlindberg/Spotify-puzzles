@@ -89,8 +89,8 @@ def solve(m, n, t, p):
     """
 
     # Make sure that input parameters are within range
-    for var, min, max in [(m,1,1000), (n,1,m), (t,1,100), (p,1,m)]:
-      if var < min or var > max:
+    for var, min_, max in [(m,1,1000), (n,1,m), (t,1,100), (p,1,m)]:
+      if var < min_ or var > max:
         return False
 
     # generate a probability function prob
@@ -101,7 +101,7 @@ def solve(m, n, t, p):
     # total number of people in the group. The solution to this puzzle
     # is the sum of the results from the prob function using this list
     # as input parameters.
-    xs = range(int(math.ceil(float(p) / float(t))), p + 1)
+    xs = range(int(math.ceil(float(p) / float(t))), min(n,p) + 1)
 
     return sum([prob(x) for x in xs])
 
