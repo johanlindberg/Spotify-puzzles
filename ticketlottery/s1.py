@@ -93,6 +93,10 @@ def solve(m, n, t, p):
       if var < min_ or var > max:
         return False
 
+    min_required_wins = int(math.ceil(float(p) / float(t)))
+    if min_required_wins > n:
+        return 0.0
+
     # generate a probability function prob
     prob = gen_prob(p, n, m)
 
@@ -101,7 +105,7 @@ def solve(m, n, t, p):
     # total number of people in the group. The solution to this puzzle
     # is the sum of the results from the prob function using this list
     # as input parameters.
-    xs = range(int(math.ceil(float(p) / float(t))), min(n,p) + 1)
+    xs = range(min_required_wins, min(n,p) + 1)
 
     return sum([prob(x) for x in xs])
 
@@ -109,4 +113,4 @@ if __name__ == '__main__':
     #doctest.testmod()
     for line in sys.stdin:
       m, n, t, p = line.split()
-      print solve(int(m), int(n), int(t), int(p))
+      print "%.10f" % (solve(int(m), int(n), int(t), int(p)))
