@@ -13,10 +13,10 @@ def solve(n):
     >>> solve(1) # 1b -> 1b
     1
     
-    >> > solve(2) # 10b -> 01b
+    >>> solve(2) # 10b -> 01b
     1
     """
-    return n
+    return int('0b' + reverse_bin(n), base = 2)
 
 def binary(n):
     """
