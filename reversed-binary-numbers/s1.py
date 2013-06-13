@@ -21,9 +21,9 @@ def solve(n):
 def binary(n):
     """
     >>> binary(2)
-    10
+    '10'
     """
-    pass
+    return bin(n)[2:]
 
 if __name__ == '__main__':
     doctest.testmod()
