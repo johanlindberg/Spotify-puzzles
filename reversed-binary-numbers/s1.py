@@ -27,5 +27,12 @@ def binary(n):
     """
     return bin(n)[2:]
 
+def reverse_bin(n):
+    """
+    >>> reverse_bin(2) # 10b -> 01b
+    '01'
+    """
+    pass
+
 if __name__ == '__main__':
     doctest.testmod()
