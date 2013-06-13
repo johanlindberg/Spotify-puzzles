@@ -21,7 +21,9 @@ def solve(n):
     >>> solve(47)
     61
     """
-    return int("".join([x for x in reversed(bin(n)[2:])]), base = 2)
+    b = bin(n)[2:] # strip the leading '0b'
+    r = "".join([x for x in reversed(b)])
+    return int(r, base = 2)
 
 if __name__ == '__main__':
     doctest.testmod()
