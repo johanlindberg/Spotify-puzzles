@@ -16,16 +16,7 @@ def solve(n):
     >>> solve(2) # 10b -> 01b
     1
     """
-    return int(reverse_bin(n), base = 2)
-
-def reverse_bin(n):
-    """
-    >>> reverse_bin(2) # 10b -> 01b
-    '01'
-    >>> reverse_bin(42) # 101010b -> 010101b
-    '010101'
-    """
-    return "".join([x for x in reversed(bin(n)[2:])])
+    return int("".join([x for x in reversed(bin(n)[2:])]), base = 2)
 
 if __name__ == '__main__':
     doctest.testmod()
