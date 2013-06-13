@@ -29,4 +29,4 @@ def solve(n):
 if __name__ == '__main__':
     # doctest.testmod()
     for line in sys.stdin:
-        solve(line.strip())
+        solve(int(line.strip()))
