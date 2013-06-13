@@ -11,7 +11,7 @@ def solve(n):
     >>> solve(0) # 0b -> 0b
     0
     """
-    pass
+    return 0
 
 if __name__ == '__main__':
     doctest.testmod()
