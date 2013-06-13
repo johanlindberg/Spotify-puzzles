@@ -31,6 +31,8 @@ def reverse_bin(n):
     """
     >>> reverse_bin(2) # 10b -> 01b
     '01'
+    >>> reverse_bin(42) # 101010b -> 010101b
+    '010101'
     """
     return "".join([x for x in reversed(binary(n))])
 
