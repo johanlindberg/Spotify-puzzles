@@ -13,7 +13,7 @@ def solve(n):
     >>> solve(1) # 1b -> 1b
     1
     """
-    return 0
+    return n
 
 if __name__ == '__main__':
     doctest.testmod()
