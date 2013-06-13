@@ -12,10 +12,18 @@ def solve(n):
     0
     >>> solve(1) # 1b -> 1b
     1
-    >>> solve(2) # 10b -> 01b
+    
+    >> > solve(2) # 10b -> 01b
     1
     """
     return n
+
+def binary(n):
+    """
+    >>> binary(2)
+    10
+    """
+    pass
 
 if __name__ == '__main__':
     doctest.testmod()
