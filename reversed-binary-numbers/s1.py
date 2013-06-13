@@ -4,7 +4,8 @@
 ## instance, the binary representation of 13 is 1101, and reversing it gives
 ## 1011, which corresponds to number 11.
 
-import doctest
+#import doctest
+import sys
 
 def solve(n):
     """
@@ -23,7 +24,9 @@ def solve(n):
     """
     b = bin(n)[2:] # strip the leading '0b'
     r = "".join([x for x in reversed(b)])
-    return int(r, base = 2)
+    print int(r, base = 2)
 
 if __name__ == '__main__':
-    doctest.testmod()
+    # doctest.testmod()
+    for line in sys.stdin:
+        solve(line.strip())
