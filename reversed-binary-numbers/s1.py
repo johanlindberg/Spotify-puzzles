@@ -12,6 +12,8 @@ def solve(n):
     0
     >>> solve(1) # 1b -> 1b
     1
+    >>> solve(2) # 10b -> 01b
+    1
     """
     return n
 
