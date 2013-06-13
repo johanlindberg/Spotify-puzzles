@@ -10,6 +10,8 @@ def solve(n):
     """
     >>> solve(0) # 0b -> 0b
     0
+    >>> solve(1) # 1b -> 1b
+    1
     """
     return 0
 
