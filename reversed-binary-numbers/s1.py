@@ -32,7 +32,7 @@ def reverse_bin(n):
     >>> reverse_bin(2) # 10b -> 01b
     '01'
     """
-    pass
+    return "".join([x for x in reversed(binary(n))])
 
 if __name__ == '__main__':
     doctest.testmod()
