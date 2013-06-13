@@ -8,13 +8,18 @@ import doctest
 
 def solve(n):
     """
-    >>> solve(0) # 0b -> 0b
+    >>> solve(0) # 0b0 -> 0b0
     0
-    >>> solve(1) # 1b -> 1b
+    >>> solve(1) # 0b1 -> 0b1
     1
     
-    >>> solve(2) # 10b -> 01b
+    >>> solve(2) # 0b10 -> 0b01
     1
+
+    >>> solve(13)
+    11
+    >>> solve(47)
+    61
     """
     return int("".join([x for x in reversed(bin(n)[2:])]), base = 2)
 
