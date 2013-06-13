@@ -22,6 +22,8 @@ def binary(n):
     """
     >>> binary(2)
     '10'
+    >>> binary(42)
+    '101010'
     """
     return bin(n)[2:]
 
